@@ -31,25 +31,6 @@
       position: relative;
     }
 
-    .alarm {
-      @extend %icon;
-      background-image: url(/assets/images/svg/alarm.svg);
-    }
-
-    .colab {
-      @extend %icon;
-      background-image: url(/assets/images/svg/col.svg);
-    }
-
-    .color {
-      @extend %icon;
-      background-image: url(/assets/images/svg/bg.svg);
-    }
-
-    .image {
-      @extend %icon;
-      background-image: url(/assets/images/svg/image.svg);
-    }
 
     .archive {
       @extend %icon;
@@ -66,24 +47,9 @@
       background-image: url(/assets/images/svg/more.svg);
     }
 
-    .undo {
-      @extend %icon;
-      background-image: url(/assets/images/svg/undo.svg);
-    }
-
     .delete {
       @extend %icon;
       background-image: url(/assets/images/svg/delete.svg);
-    }
-
-    .restore {
-      @extend %icon;
-      background-image: url(/assets/images/svg/restore.svg);
-    }
-
-    .undo.r {
-      @extend %icon;
-      transform: scaleX(-1);
     }
 
     .disabled {
@@ -95,26 +61,3 @@
   }
 }
 
-
-
-
-//? pin-icon
-.pin-icon {
-  opacity: 0.54;
-  height: 32px;
-  width: 32px;
-  right: 14px;
-  top: 8px;
-  position: absolute;
-  background-image: url(/assets/images/svg/pin.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &.pinned {
-    background-image: url(/assets/images/svg/pin-pinned.svg) !important;
-  }
-
-  &:hover {
-    opacity: 0.87 !important;
-  }
-}
