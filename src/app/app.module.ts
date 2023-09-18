@@ -15,6 +15,7 @@ import {SidenavComponent} from './components/sidenav/sidenav.component';
 import {InputComponent} from './components/input/input.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NotesComponent } from './components/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     SidenavComponent,
     InputComponent,
+    NotesComponent,
 
   ],
   imports: [

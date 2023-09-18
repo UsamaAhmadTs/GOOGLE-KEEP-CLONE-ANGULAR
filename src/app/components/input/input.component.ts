@@ -1,4 +1,7 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {BehaviorSubject} from "rxjs";
+
+type InputLengthI = { title?: number, body?: number }
 
 @Component({
   selector: 'app-input',
@@ -6,53 +9,32 @@ import {Component, ElementRef, EventEmitter, HostListener, Input, ViewChild} fro
   styleUrls: ['./input.component.scss']
 })
 export class InputComponent {
-  @ViewChild('mainNote') mainNote!: ElementRef;
-  @ViewChild('dropNote') dropNote!: ElementRef;
-  @ViewChild('form') form!: ElementRef;
+  showFirst = true;
+  showDropdownMenu = false;
 
-  constructor(private _elementRef: ElementRef) {
-    document.addEventListener('click', this.offClickHandler.bind(this)); // bind on doc
+  toggleDropdownMenu() {
+    this.showDropdownMenu = !this.showDropdownMenu;
   }
 
-  showDropNote() {
-    this.dropNote.nativeElement.hidden = true;
-    this.mainNote.nativeElement.hidden = true;
+  toggleDivs() {
+    this.showFirst = !this.showFirst;
   }
 
-  isDropdownOpen: boolean = false;
-  isDropNoteOpen: boolean = false;
-  isMainNoteOpen: boolean = true;
+  title: string = '';
+  text: string = '';
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
+  @Output() saveNote = new EventEmitter<{ title: string, text: string }>();
 
-  toggleDropNote() {
-    this.isDropNoteOpen = !this.isDropNoteOpen;
-  }
+  onSaveNote() {
+    if (this.title.trim() !== '' && this.text.trim() !== '') {
+      this.saveNote.emit({title: this.title, text: this.text});
+      this.title = '';
+      this.text = '';
 
-  showMainNote() {
-    this.isMainNoteOpen = true;
-  }
-
-  offClickHandler(event: any) {
-    if (!this.mainNote.nativeElement.contains(event.target)) { // check click origin
-      this.dropNote.nativeElement.style.display = "block";
-      this.mainNote.nativeElement.style.display = "none";
-    }
-  }
-
-  public clickOutside = new EventEmitter<MouseEvent>();
-
-  @HostListener('document:click', ['$event', '$event.target'])
-  public onClick(event: MouseEvent, targetElement: HTMLElement): void {
-    if (!targetElement) {
-      return;
-    }
-
-    const clickedInside = this._elementRef.nativeElement.contains(this.mainNote);
-    if (!clickedInside) {
-      this.clickOutside.emit(event);
+      // Save note in local storage
+      const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+      notes.push({title: this.title, text: this.text});
+      localStorage.setItem('notes', JSON.stringify(notes));
     }
   }
 
