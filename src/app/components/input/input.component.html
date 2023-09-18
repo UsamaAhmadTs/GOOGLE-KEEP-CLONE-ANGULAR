@@ -1,107 +1,32 @@
-<div #mainNote class="form-container" [hidden] = "!isMainNoteOpen">
-  <form  class="main-note" >
+<div #mainNote class="form-container" [hidden]="!isMainNoteOpen">
+  <form class="main-note">
     <input class="note-text" type="text" placeholder="Take a note..." (click)="showDropNote()"/>
     <div class="form-actions">
     </div>
   </form>
 </div>
 
-
-  <div #dropNote class="form-container active-form" [hidden]="!isDropNoteOpen">
-    <form class="drop-note">
-      <input type="text" class="note-title" placeholder="Title"/>
-      <input class="note-text" type="text" placeholder="Take a note..."/>
-      <div class="form-actions">
-        <div class="icons">
-          <div class="tooltip">
-            <span class="material-icons-outlined hover small-icon">archive</span>
-            <span class="tooltip-text">Archive</span>
-          </div>
-          <div class="tooltip" (click)="toggleDropdown()">
-            <span class="material-icons-outlined hover small-icon">more_vert</span>
-            <span class="tooltip-text">More</span>
-          </div>
+<div #dropNote class="form-container active-form" [hidden]="!isDropNoteOpen">
+  <form class="drop-note">
+    <input type="text" class="note-title" placeholder="Title"/>
+    <input class="note-text" type="text" placeholder="Take a note..."/>
+    <div class="form-actions">
+      <div class="icons">
+        <div class="tooltip">
+          <span class="material-icons-outlined hover small-icon">archive</span>
+          <span class="tooltip-text">Archive</span>
         </div>
-        <button class="close-btn">Close</button>
+        <div class="tooltip" (click)="toggleDropdown()">
+          <span class="material-icons-outlined hover small-icon">more_vert</span>
+          <span class="tooltip-text">More</span>
+        </div>
       </div>
-    </form>
-    <div *ngIf="isDropdownOpen" class="dropdown-menu">
-      <div (click)="addLabel()">Add label</div>
+      <button class="close-btn">Close</button>
     </div>
+  </form>
+  <div *ngIf="isDropdownOpen" class="dropdown-menu">
+    <div (click)="addLabel()">Add label</div>
   </div>
+</div>
 
-<!--<div #main class="main-container">-->
-<!--  &lt;!&ndash;? placeholder &ndash;&gt;-->
-<!--  <div #notePlaceholder class="placeholder">-->
-<!--    <input class="input" placeholder="Take a note…" type="text" (click)="showNoteMain()">-->
-<!--    <div class="check H pop" data-pop="New list"></div>-->
-<!--    <div class="paint H disabled pop" data-pop="New note with drawing"></div>-->
-<!--    <div class="picture H disabled" data-pop="New note with image"></div>-->
-<!--  </div>-->
-
-<!--  &lt;!&ndash;? new note &ndash;&gt;-->
-<!--  <div #noteMain class="note-main" hidden>-->
-<!--    <div #noteContainer class="note-container">-->
-<!--      <div [hidden]="noteTitle.innerHTML.length" class="note-title ph"> Title</div>-->
-<!--      <div #noteTitle-->
-<!--           class="note-title" contenteditable="true" spellcheck="true">-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="form-container active-form">-->
-<!--      <form>-->
-<!--        <input class="note-text" type="text" placeholder="Take a note..."/>-->
-<!--        <div class="form-actions">-->
-<!--          <div class="icons">-->
-<!--            <div class="tooltip">-->
-<!--              <img src="./assets/images/svg/archive2.svg" alt="archive" class="pic">-->
-<!--            </div>-->
-<!--            <div class="tooltip" (click)="toggleDropdown()">-->
-<!--              <img src="./assets/images/svg/more.svg" alt="more" class="pic">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <button class="close-btn">Close</button>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--      <div *ngIf="isDropdownOpen" class="dropdown-menu">-->
-<!--        <div (click)="deleteNote()">Delete note</div>-->
-<!--        <div (click)="addLabel()">Add label</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;    &lt;!&ndash;? icons &ndash;&gt;&ndash;&gt;-->
-<!--    &lt;!&ndash;    <div class="icons-container">&ndash;&gt;-->
-<!--    &lt;!&ndash;      <div class="icons">&ndash;&gt;-->
-<!--    &lt;!&ndash;        <div class="archive H pop" data-pop="Archive"></div>&ndash;&gt;-->
-<!--    &lt;!&ndash;        <div #moreMenuTtBtn class="more H pop" data-pop="More">&ndash;&gt;-->
-<!--    &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
-<!--    &lt;!&ndash;      <div class="close-btn" (click)="hideNoteMain()"> Close</div>&ndash;&gt;-->
-<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
-<!--    &lt;!&ndash;  </div>&ndash;&gt;-->
-<!--  </div>-->
-
-<!--  <div #moreMenuTt (click)="toggleDropdown()" data-tooltip="true" data-is-tooltip-open="false" class="more-dropdown">-->
-<!--    <div *ngIf="isDropdownOpen">-->
-<!--      <div (click)="deleteNote()">-->
-<!--        Delete note-->
-<!--      </div>-->
-<!--      <div #labelMenuBtn (click)="addLabel()">-->
-<!--        Add label-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  &lt;!&ndash;? label MENU &ndash;&gt;-->
-<!--  <div #labelMenuTt data-tooltip="true" data-is-tooltip-open="false" class="labelMenu">-->
-<!--    <div class="title">Label note</div>-->
-<!--    <div class="search">-->
-<!--      <input type="text" maxlength="50" placeholder="Enter label name">-->
-<!--      <div class="search-icon"></div>-->
-<!--    </div>-->
-<!--    <div class="label-list-container">-->
-<!--      <div class="label-list">-->
-<!--        <div class="check-icon"></div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 

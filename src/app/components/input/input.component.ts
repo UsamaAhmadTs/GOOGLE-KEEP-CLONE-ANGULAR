@@ -9,55 +9,53 @@ export class InputComponent {
   @ViewChild('mainNote') mainNote!: ElementRef;
   @ViewChild('dropNote') dropNote!: ElementRef;
   @ViewChild('form') form!: ElementRef;
+
   constructor(private _elementRef: ElementRef) {
     document.addEventListener('click', this.offClickHandler.bind(this)); // bind on doc
   }
+
   showDropNote() {
     this.dropNote.nativeElement.hidden = true;
     this.mainNote.nativeElement.hidden = true;
   }
+
   isDropdownOpen: boolean = false;
   isDropNoteOpen: boolean = false;
   isMainNoteOpen: boolean = true;
+
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
+
   toggleDropNote() {
     this.isDropNoteOpen = !this.isDropNoteOpen;
   }
+
   showMainNote() {
     this.isMainNoteOpen = true;
   }
-  offClickHandler(event:any) {
+
+  offClickHandler(event: any) {
     if (!this.mainNote.nativeElement.contains(event.target)) { // check click origin
       this.dropNote.nativeElement.style.display = "block";
       this.mainNote.nativeElement.style.display = "none";
     }
   }
+
   public clickOutside = new EventEmitter<MouseEvent>();
+
   @HostListener('document:click', ['$event', '$event.target'])
   public onClick(event: MouseEvent, targetElement: HTMLElement): void {
     if (!targetElement) {
       return;
     }
 
-    const clickedInside = this._elementRef.nativeElement.contains(mainNote);
+    const clickedInside = this._elementRef.nativeElement.contains(this.mainNote);
     if (!clickedInside) {
       this.clickOutside.emit(event);
     }
   }
-  // @HostListener('document:click', ['$event'])
-  // onDocumentClick(event: MouseEvent) {
-  //   if (!((event.target as HTMLElement)?.closest('.note-main') || (event.target as HTMLElement)?.closest('.drop-note'))) {
-  //     this.toggleDropNote();
-  //     this.showMainNote();
-  //   }
-  // }
-  // @HostListener('document:click', ['$event'])
-  // onClick(event : MouseEvent) {
-  //   if (!this._eref.nativeElement.contains(event.target)) // or some similar check
-  //
-  // }
+
   addLabel() {
   }
 

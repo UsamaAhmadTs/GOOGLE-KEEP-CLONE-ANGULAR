@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +9,11 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild("form23zSaZ") form23zSaZ?: ElementRef<HTMLDivElement>
 
+  refresh() {
+    window.location.reload()
+  }
 
-
-  refresh() { window.location.reload() }
-
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
 }

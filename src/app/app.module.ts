@@ -1,14 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MainComponent } from './components/main/main.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { InputComponent } from './components/input/input.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {BrowserModule} from '@angular/platform-browser';
 
+import {AppRoutingModule} from './app-routing.module';
+
+import {AppComponent} from './app.component';
+
+import {MainComponent} from './components/main/main.component';
+
+import {NavbarComponent} from './components/navbar/navbar.component';
+
+import {SidenavComponent} from './components/sidenav/sidenav.component';
+
+import {InputComponent} from './components/input/input.component';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,4 +33,5 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
